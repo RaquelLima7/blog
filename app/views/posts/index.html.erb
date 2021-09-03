@@ -1,9 +1,22 @@
-<h1> Posts </h1>
-<% if @posts.size > 0 %>
-  <% @posts.each do |post| %>
-    <%= post.title %>
-    <br>
-  <% end %>
+<h1>Posts</h1>
+
+<% if @posts %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%=time_ago_in_words(post.created_at) %> ago</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
-  <p>Nenhum post cadastrado</p>
+  <p> No results found </p>
 <% end %>
