@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_160848) do
+ActiveRecord::Schema.define(version: 2021_09_03_144741) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "country"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2021_09_02_160848) do
     t.string "complement"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "author_id", null: false
+    t.index ["author_id"], name: "index_addresses_on_author_id"
   end
 
   create_table "authors", force: :cascade do |t|
@@ -32,4 +34,5 @@ ActiveRecord::Schema.define(version: 2021_09_02_160848) do
     t.string "description"
   end
 
+  add_foreign_key "addresses", "authors"
 end
