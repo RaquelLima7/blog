@@ -1,4 +1,5 @@
 class Author < ApplicationRecord
+  has_one_attached :avatar
   validates :first_name, presence: true,  length: { minimum: 2, maximum: 100 }
   validates :description, allow_nil: true, length: { maximum: 500 }
 
@@ -6,8 +7,7 @@ class Author < ApplicationRecord
 
   has_many :addresses, dependent: :destroy
   has_many :posts
-
-
+ 
   private
   def titleize_last_name
     self.last_name = last_name.titleize
