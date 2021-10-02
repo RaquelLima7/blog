@@ -6,6 +6,11 @@
   </p>
 <% end %>
 
+<% if @author.photos.attached? %>
+  <% @author.photos.each do |photo| %>
+    <%= image_tag(photo, height: '200') %>
+<% end %>
+
 <p>
   <strong>First name:</strong>
   <%= @author.first_name %>
